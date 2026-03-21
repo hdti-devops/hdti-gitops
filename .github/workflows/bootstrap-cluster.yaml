@@ -39,7 +39,7 @@ jobs:
           roleId: ${{ secrets.ROLEID }}
           secretId: ${{ secrets.SECRETID }} 
           secrets: |
-            secrets/k8s/kubeconfig config | KUBECONFIG_DATA
+            secrets/data/k8s/kubeconfig config | KUBECONFIG_DATA
 
       - name: Set Kubernetes Context
         uses: azure/k8s-set-context@v4
