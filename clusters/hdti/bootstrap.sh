@@ -22,12 +22,6 @@ if ! command -v helm &> /dev/null; then
   curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 fi
 
-if ! command -v kustomize &> /dev/null; then
-  echo "📦 Installing Kustomize..."
-  curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
-  mv kustomize /usr/local/bin/
-fi
-
 # Step 2: Add Argo Helm repo
 echo "📦 Adding Argo Helm repo..."
 helm repo add argo https://argoproj.github.io/argo-helm
