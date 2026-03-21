@@ -45,10 +45,19 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ env.KUBECONFIG_DATA }}
 
+      - name: Prepare Kubeconfig for Script
+        run: |
+          # 1. Disable TLS check for this runner session
+          kubectl config set-cluster kubernetes --insecure-skip-tls-verify=true
+          # 2. Force the KUBECONFIG path into the environment for the next step
+          echo "KUBECONFIG=${{ env.KUBECONFIG }}" >> $GITHUB_ENV
+
       - name: BootStrap Argo
         run: |
           # Use github.event.inputs for maximum compatibility
           SCRIPT_PATH="./clusters/${{ github.event.inputs.cluster_name }}/bootstrap.sh"
           chmod +x "$SCRIPT_PATH"
           ./"$SCRIPT_PATH"
+        env:
+          KUBECONFIG: ${{ env.KUBECONFIG }} # Ensure the script sees the file path
         
