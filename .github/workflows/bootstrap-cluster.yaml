@@ -39,7 +39,8 @@ jobs:
           roleId: ${{ secrets.ROLEID }}
           secretId: ${{ secrets.SECRETID }} 
           secrets: |
-            secrets/data/k8s/kubeconfig config | KUBECONFIG_DATA
+            # Using the clean path we just verified
+            secrets/k8s/kubeconfig config | KUBECONFIG_DATA
 
       - name: Set Kubernetes Context
         uses: azure/k8s-set-context@v4
@@ -47,6 +48,13 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ env.KUBECONFIG_DATA }}
 
+      - name: Prepare Runner Environment
+        run: |
+          # 1. Force skip TLS for the homelab cert
+          kubectl config set-cluster kubernetes --insecure-skip-tls-verify=true
+          # 2. Export the path for the bootstrap script
+          echo "KUBECONFIG=${{ env.KUBECONFIG }}" >> $GITHUB_ENV
+          
       - name: Prepare Kubeconfig for Script
         run: |
           # 1. Disable TLS check for this runner session
