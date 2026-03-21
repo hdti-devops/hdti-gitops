@@ -27,6 +27,10 @@ echo "📦 Adding Argo Helm repo..."
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 
+# Step 3: Create namespace (Add --validate=false)
+echo "📁 Creating namespace: $NAMESPACE"
+kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply --validate=false -f -
+
 # Step 3: Create namespace
 echo "📁 Creating namespace: $NAMESPACE"
 kubectl --insecure-skip-tls-verify create namespace $NAMESPACE --dry-run=client -o yaml | \
