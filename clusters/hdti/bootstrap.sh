@@ -41,7 +41,7 @@ helm upgrade --install $RELEASE_NAME argo/argo-cd \
 
 # Step 5: Wait for pods
 echo "⏳ Waiting for Argo CD pods to be ready..."
-kubectl --insecure-skip-tls-verify wait --for=condition=available deployment --all -n $NAMESPACE --timeout=300s
+kubectl wait --for=condition=available deployment --all -n $NAMESPACE --timeout=300s
 
 # Step 6: Get admin password
 echo "🔑 Fetching Argo CD admin password..."
