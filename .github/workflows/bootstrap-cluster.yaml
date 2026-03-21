@@ -39,7 +39,6 @@ jobs:
           roleId: ${{ secrets.ROLEID }}
           secretId: ${{ secrets.SECRETID }} 
           secrets: |
-            # Using the clean path we just verified
             secrets/k8s/kubeconfig config | KUBECONFIG_DATA
 
       - name: Set Kubernetes Context
