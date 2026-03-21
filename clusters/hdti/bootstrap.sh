@@ -37,7 +37,6 @@ echo "⚙️ Installing Argo CD..."
 helm upgrade --install $RELEASE_NAME argo/argo-cd \
   --namespace $NAMESPACE \
   --set server.service.type=ClusterIP \
-  --kube-as-user=kubernetes-admin \
   --kube-insecure-skip-tls-verify
 
 # Step 5: Wait for pods
