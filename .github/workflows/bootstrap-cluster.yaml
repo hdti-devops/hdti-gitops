@@ -1,0 +1,41 @@
+name: BootStrap Cluster
+
+on: 
+  workflow_dispatch:
+    inputs:
+      cluster_name:
+        description: 'Select the cluster to bootstrap'
+        required: true
+        default: 'hdti'
+        type: choice
+        options:
+          - hdti
+
+jobs:
+  bootstrap_cluster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Import Secrets from Vault
+        uses: hashicorp/vault-action@v3
+        with:
+          url: http://192.168.0.188:8200
+          method: approle
+          roleId: ${{ secrets.ROLEID }}
+          secretId: ${{ secrets.SECRETID }} 
+          secrets: |
+            secrets/data/k8s/kubeconfig config | KUBECONFIG_DATA
+
+      - name: Set Kubernetes Context
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ env.KUBECONFIG_DATA }}
+
+      - name: BootStrap Argo
+        run: |
+          chmod +x ./clusters/${{ inputs.cluster_name }}/bootstrap.sh
+          ./clusters/${{ inputs.cluster_name }}/bootstrap.sh
+        
