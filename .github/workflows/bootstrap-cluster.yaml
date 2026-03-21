@@ -67,7 +67,12 @@ jobs:
         run: |
           # 1. Create the directory
           cat ~/.kube/config
-          
+      
+      - name: Debug Kubeconfig
+        run: |
+          kubectl config view
+          kubectl config get-contexts
+          kubectl get nodes --insecure-skip-tls-verify
 
       - name: BootStrap Argo
         run: |

@@ -33,8 +33,10 @@ kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply --v
 
 # Step 3: Create namespace
 echo "📁 Creating namespace: $NAMESPACE"
-kubectl --insecure-skip-tls-verify create namespace $NAMESPACE --dry-run=client -o yaml | \
-kubectl --insecure-skip-tls-verify apply -f -
+# Adding --validate=false and --insecure-skip-tls-verify ensures the command 
+# doesn't fail while trying to download the OpenAPI schema
+kubectl create namespace $NAMESPACE --dry-run=client -o yaml | \
+kubectl apply -f - --validate=false --insecure-skip-tls-verify
 
 # Step 4: Install Argo CD
 echo "⚙️ Installing Argo CD..."
