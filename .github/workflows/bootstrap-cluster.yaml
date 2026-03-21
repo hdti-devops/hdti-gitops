@@ -36,6 +36,8 @@ jobs:
 
       - name: BootStrap Argo
         run: |
-          chmod +x ./clusters/${{ inputs.cluster_name }}/bootstrap.sh
-          ./clusters/${{ inputs.cluster_name }}/bootstrap.sh
+          # Use github.event.inputs for maximum compatibility
+          SCRIPT_PATH="./clusters/${{ github.event.inputs.cluster_name }}/bootstrap.sh"
+          chmod +x "$SCRIPT_PATH"
+          ./"$SCRIPT_PATH"
         
