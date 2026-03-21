@@ -10,6 +10,8 @@ on:
         type: choice
         options:
           - hdti
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   bootstrap_cluster:
@@ -51,6 +53,21 @@ jobs:
           kubectl config set-cluster kubernetes --insecure-skip-tls-verify=true
           # 2. Force the KUBECONFIG path into the environment for the next step
           echo "KUBECONFIG=${{ env.KUBECONFIG }}" >> $GITHUB_ENV
+
+      - name: Setup Kubeconfig
+        run: |
+          # 1. Create the directory
+          mkdir -p ~/.kube
+          # 2. Write the data (Ensure KUBECONFIG_DATA contains the raw YAML)
+          echo "${{ env.KUBECONFIG_DATA }}" > ~/.kube/config
+          # 3. Set the cluster to skip TLS verification
+          kubectl config set-cluster kubernetes --insecure-skip-tls-verify=true
+
+      - name: Cat Kubeconfig
+        run: |
+          # 1. Create the directory
+          cat ~/.kube/config
+          
 
       - name: BootStrap Argo
         run: |
