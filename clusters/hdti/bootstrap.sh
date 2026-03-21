@@ -29,17 +29,20 @@ helm repo update
 
 # Step 3: Create namespace
 echo "📁 Creating namespace: $NAMESPACE"
-kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply -f -
+kubectl --insecure-skip-tls-verify create namespace $NAMESPACE --dry-run=client -o yaml | \
+kubectl --insecure-skip-tls-verify apply -f -
 
 # Step 4: Install Argo CD
 echo "⚙️ Installing Argo CD..."
 helm upgrade --install $RELEASE_NAME argo/argo-cd \
   --namespace $NAMESPACE \
-  --set server.service.type=ClusterIP
+  --set server.service.type=ClusterIP \
+  --kube-as-user=kubernetes-admin \
+  --kube-insecure-skip-tls-verify
 
 # Step 5: Wait for pods
 echo "⏳ Waiting for Argo CD pods to be ready..."
-kubectl wait --for=condition=available deployment --all -n $NAMESPACE --timeout=300s
+kubectl --insecure-skip-tls-verify wait --for=condition=available deployment --all -n $NAMESPACE --timeout=300s
 
 # Step 6: Get admin password
 echo "🔑 Fetching Argo CD admin password..."
