@@ -1,0 +1,11 @@
+{
+  "separate-pull-requests": true,
+  "sequential-calls": true,
+  "skip-github-release": false,
+  "packages": {
+    "external-secrets-tools": {
+      "path": "charts/external-secrets-tools",
+      "release-type": "helm"
+    }
+  }
+}

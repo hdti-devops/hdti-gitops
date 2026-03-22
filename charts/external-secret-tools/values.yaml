@@ -1,0 +1,9 @@
+vault:
+  server: "http://192.168.0.188:8200"
+  path: "secrets"
+  version: "v2"
+  approlePath: "approle"
+  secretNamespace: "external-secrets"
+  secretName: "vault-approle"
+  secretKeyRoleId: "roleId"   # key in secret for roleId
+  secretKeySecretId: "secretId" # key in secret for secretI

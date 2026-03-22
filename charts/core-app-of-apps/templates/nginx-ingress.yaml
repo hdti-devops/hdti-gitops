@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress
+  namespace: {{ .Values.apps.nginx-ingress.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: 1
+spec:
+  project: default
+  source:
+    repoURL: {{ .Values.baseRepoURL }}
+    targetRevision: {{ .Values.apps.nginx-ingress.targetRevision }}
+    path: {{ .Values.basePath }}{{ .Values.apps.nginx-ingress.path }}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ .Values.apps.nginx-ingress.namespace }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  retry:
+    limit: 5

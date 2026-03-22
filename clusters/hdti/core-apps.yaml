@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: core-applications
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: 0
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hdti-devops/hdti-gitops.git
+    targetRevision: HEAD
+    path: charts/core-app-of-apps
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  retry:
+    limit: 5
