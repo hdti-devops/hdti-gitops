@@ -11,4 +11,3 @@ apps:
     targetRevision: HEAD
     path: external-secrets
     namespace: external-secrets
-    vaultClusterStore: true
