@@ -31,19 +31,12 @@ helm repo update
 echo "📁 Creating namespace: $NAMESPACE"
 kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply --validate=false -f -
 
-# Step 3: Create namespace
-echo "📁 Creating namespace: $NAMESPACE"
-# Adding --validate=false and --insecure-skip-tls-verify ensures the command 
-# doesn't fail while trying to download the OpenAPI schema
-kubectl create namespace $NAMESPACE --dry-run=client -o yaml | \
-kubectl apply -f - --validate=false --insecure-skip-tls-verify
-
 # Step 4: Install Argo CD
 echo "⚙️ Installing Argo CD..."
 helm upgrade --install $RELEASE_NAME argo/argo-cd \
+  -- version  9.4.15 \
   --namespace $NAMESPACE \
-  --set server.service.type=ClusterIP \
-  --kube-insecure-skip-tls-verify
+  --set server.service.type=ClusterIP 
 
 # Step 5: Wait for pods
 echo "⏳ Waiting for Argo CD pods to be ready..."
@@ -51,6 +44,14 @@ kubectl wait --for=condition=available deployment --all -n $NAMESPACE --timeout=
 
 # Step 6: Get admin password
 echo "🔑 Fetching Argo CD admin password..."
+echo "Waiting for admin secret..."
+for i in {1..30}; do
+  if kubectl -n $NAMESPACE get secret argocd-initial-admin-secret &>/dev/null; then
+    break
+  fi
+  sleep 5
+done
+
 PASSWORD=$(kubectl -n $NAMESPACE get secret argocd-initial-admin-secret \
   -o jsonpath="{.data.password}" | base64 -d)
 
