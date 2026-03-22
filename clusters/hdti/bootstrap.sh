@@ -34,7 +34,7 @@ kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply --v
 # Step 4: Install Argo CD
 echo "⚙️ Installing Argo CD..."
 helm upgrade --install "$RELEASE_NAME" argo/argo-cd \
-  --version  9.4.15 \
+  --version  "9.4.15" \
   --namespace "$NAMESPACE" \
   --set server.service.type=ClusterIP 
 
