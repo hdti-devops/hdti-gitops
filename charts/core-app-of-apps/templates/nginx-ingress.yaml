@@ -2,18 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-ingress
-  namespace: {{ .Values.apps.nginx-ingress.namespace }}
+  namespace: {{ .Values.apps.nginxIngress.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: 1
 spec:
   project: default
   source:
     repoURL: {{ .Values.baseRepoURL }}
-    targetRevision: {{ .Values.apps.nginx-ingress.targetRevision }}
-    path: {{ .Values.basePath }}{{ .Values.apps.nginx-ingress.path }}
+    targetRevision: {{ .Values.apps.nginxIngress.targetRevision }}
+    path: {{ .Values.basePath }}{{ .Values.apps.nginxIngress.path }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.apps.nginx-ingress.namespace }}
+    namespace: {{ .Values.apps.nginxIngress.namespace }}
   syncPolicy:
     automated:
       prune: true

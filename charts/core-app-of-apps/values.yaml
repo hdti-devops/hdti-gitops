@@ -2,12 +2,12 @@ baseRepoURL: https://github.com/hdti-devops/hdti-gitops.git
 basePath: clusters/hdti/tenants/dev/core/
 
 apps:
-  nginx-ingress:
+  nginxIngress:
     targetRevision: HEAD
     path: nginx-ingress
     namespace: nginx-ingress
 
-  external-secrets:
+  externalSecrets:
     targetRevision: HEAD
     path: external-secrets
     namespace: external-secrets
