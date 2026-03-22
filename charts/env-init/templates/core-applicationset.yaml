@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: core-apps
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: {{ .Values.repoURL }}
+        revision: {{ .Values.revision }}
+        directories:
+          - path: {{ .Values.paths.core }}
+
+  template:
+    metadata:
+      name: '{{path.basename}}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ include "env-init.syncWave" (dict "name" path.basename "Values" .Values) }}'
+
+    spec:
+      project: default
+      source:
+        repoURL: {{ .Values.repoURL }}
+        targetRevision: {{ .Values.revision }}
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+        ignoreDifferences:
+{{ include "env-init.ignoreDifferences" (dict "name" path.basename "Values" .Values) }}
+      retry:
+        limit: 5

@@ -1,0 +1,8 @@
+apiVersion: v2
+type: application
+description: Generate argocd applications with git generator for all subfolders related.
+name: env-init
+version: 0.0.1
+appVersion: "v0.0.1"
+
+

@@ -1,0 +1,17 @@
+repoURL: https://github.com/hdti-devops/hdti-gitops.git
+revision: HEAD
+
+cluster:
+  name: hdti
+  tenant: dev
+
+paths:
+  core: clusters/hdti/tenants/dev/core/*
+
+syncWaves:
+  external-secrets: 1
+  cert-manager: 2
+  ingress: 2
+  secrets: 3
+  argocd: 4
+  default: 5

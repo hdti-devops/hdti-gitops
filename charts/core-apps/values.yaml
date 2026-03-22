@@ -1,0 +1,23 @@
+baseRepoURL: https://github.com/hdti-devops/hdti-gitops.git
+basePath: clusters/hdti/tenants/dev/core/
+
+argocd:
+  targetRevision: HEAD
+  path: argocd
+  namespace: argocd
+
+cert-manager:
+  targetRevision: HEAD
+  path: cert-manager
+  namespace: cert-manager
+
+external-secrets:
+  targetRevision: HEAD
+  path: external-secrets
+  namespace: external-secrets
+  vaultClusterStore: true # optional, can be used in template
+
+nginx-ingress:
+  targetRevision: HEAD
+  path: nginx-ingress
+  namespace: nginx-ingress
