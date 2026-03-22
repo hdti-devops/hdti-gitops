@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 echo "🚀 Installing Argo CD via Helm..."
 
@@ -33,9 +33,9 @@ kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply --v
 
 # Step 4: Install Argo CD
 echo "⚙️ Installing Argo CD..."
-helm upgrade --install $RELEASE_NAME argo/argo-cd \
-  -- version  9.4.15 \
-  --namespace $NAMESPACE \
+helm upgrade --install "$RELEASE_NAME" argo/argo-cd \
+  --version  9.4.15 \
+  --namespace "$NAMESPACE" \
   --set server.service.type=ClusterIP 
 
 # Step 5: Wait for pods
