@@ -37,7 +37,7 @@ helm upgrade --install "$RELEASE_NAME" argo/argo-cd \
   --version  "9.4.15" \
   --namespace "$NAMESPACE" \
   --set server.service.type=ClusterIP \
-  --set configs.cm."kustomize.buildOptions"="--enable-helm" 
+  --set configs.cm."kustomize\.buildOptions"="--enable-helm"
 
 # Step 5: Wait for pods
 echo "⏳ Waiting for Argo CD pods to be ready..."
