@@ -1,4 +1,4 @@
-name: BootStrap Cluster
+name: BootStrap Argo
 
 run-name: Bootstrap cluster ${{ inputs.cluster_name }}
 
