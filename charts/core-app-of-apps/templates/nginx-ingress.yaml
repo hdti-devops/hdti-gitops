@@ -21,5 +21,6 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
-  retry:
-    limit: 5
+    retry:
+      limit: 5
+  
