@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/hdti-devops/hdti-gitops/compare/external-secrets-tools-v1.2.0...external-secrets-tools-v1.2.1) (2026-03-23)
+
+
+### Bug Fixes
+
+* **external-secrets-tools:** fix roleid ([b2d369d](https://github.com/hdti-devops/hdti-gitops/commit/b2d369db6e16510b55103f96f449e9960aa16e4d))
+
 ## [1.2.0](https://github.com/hdti-devops/hdti-gitops/compare/external-secrets-tools-v1.1.1...external-secrets-tools-v1.2.0) (2026-03-23)
 
 
