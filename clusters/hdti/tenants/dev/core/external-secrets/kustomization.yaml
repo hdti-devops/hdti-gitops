@@ -15,15 +15,3 @@ helmCharts:
     namespace: external-secrets
     releaseName: external-secrets-tools
     version: external-secrets-tools-v1.2.1 #release by release please
-
-patches:
-  - target:
-      group: external-secrets.io
-      kind: ClusterSecretStore
-    patch: |
-      apiVersion: external-secrets.io/v1
-      kind: ClusterSecretStore
-      metadata:
-        name: vault
-        annotations:
-          argocd.argoproj.io/sync-wave: "5"
