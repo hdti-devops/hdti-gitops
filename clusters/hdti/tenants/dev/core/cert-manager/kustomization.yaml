@@ -15,5 +15,13 @@ helmCharts:
     namespace: cert-manager
     releaseName: cert-manager-tools
     version: cert-manager-v1.0.0 #release by release please
-    dependencies:
-      - releaseName: cert-manager
+
+# Force ArgoCD to wait for cert-manager to be healthy before tools
+patches:
+  - target:
+      group: cert-manager.io
+      kind: (Issuer|ClusterIssuer|Certificate) # Any resource in your 'tools' chart
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io/sync-wave
+        value: "4"

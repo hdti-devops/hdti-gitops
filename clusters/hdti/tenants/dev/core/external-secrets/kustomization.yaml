@@ -15,5 +15,14 @@ helmCharts:
     namespace: external-secrets
     releaseName: external-secrets-tools
     version: external-secrets-tools-v1.2.1 #release by release please
-    dependencies:
-      - releaseName: external-secrets
+
+patches:
+  - target:
+      group: external-secrets.io
+      version: v1
+      kind: ClusterSecretStore
+      name: vault # Ensure this matches the metadata.name of your store
+    patch: |-
+      - op: add
+        path: /metadata/annotations/argocd.argoproj.io/sync-wave
+        value: "2"
