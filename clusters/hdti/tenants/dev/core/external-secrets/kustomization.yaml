@@ -7,7 +7,7 @@ helmCharts:
   - name: external-secrets-tools
     namespace: external-secrets
     releaseName: external-secrets
-    repo: ../../../../../../charts/external-secrets-tools
+    path: ../../../../../../charts/external-secrets-tools
     version: external-secrets-tools-v1.0.0 #release by release please
     includeCRDs: true
   - name: external-secrets
