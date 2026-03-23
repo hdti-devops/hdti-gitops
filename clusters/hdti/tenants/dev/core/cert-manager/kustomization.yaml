@@ -15,3 +15,5 @@ helmCharts:
     namespace: cert-manager
     releaseName: cert-manager-tools
     version: cert-manager-v1.0.0 #release by release please
+    dependencies:
+      - releaseName: cert-manager

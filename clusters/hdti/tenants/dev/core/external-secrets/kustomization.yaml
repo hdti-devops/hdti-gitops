@@ -15,3 +15,5 @@ helmCharts:
     namespace: external-secrets
     releaseName: external-secrets-tools
     version: external-secrets-tools-v1.2.1 #release by release please
+    dependencies:
+      - releaseName: external-secrets
