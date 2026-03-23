@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/hdti-devops/hdti-gitops/compare/external-secrets-tools-v1.1.0...external-secrets-tools-v1.1.1) (2026-03-23)
+
+
+### Bug Fixes
+
+* **external-secrets-tools:** fix apiVersion ([e314845](https://github.com/hdti-devops/hdti-gitops/commit/e31484563c6318e700bd15cec0c978e22b8accbb))
+
 ## [1.1.0](https://github.com/hdti-devops/hdti-gitops/compare/external-secrets-tools-v1.0.0...external-secrets-tools-v1.1.0) (2026-03-23)
 
 
