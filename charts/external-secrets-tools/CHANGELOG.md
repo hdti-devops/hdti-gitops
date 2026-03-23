@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/hdti-devops/hdti-gitops/compare/external-secrets-tools-v1.1.1...external-secrets-tools-v1.2.0) (2026-03-23)
+
+
+### Features
+
+* **external-secrets-tools:** crd version change ([bd9ff5b](https://github.com/hdti-devops/hdti-gitops/commit/bd9ff5b4fa6e4126e0dee9c92b127c14570dc8bb))
+
 ## [1.1.1](https://github.com/hdti-devops/hdti-gitops/compare/external-secrets-tools-v1.1.0...external-secrets-tools-v1.1.1) (2026-03-23)
 
 
