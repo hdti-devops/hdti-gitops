@@ -51,6 +51,12 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ env.KUBECONFIG_DATA }}
 
+      - name: Prepare Kube-proxy for MetalLB
+        run: |
+          kubectl get configmap kube-proxy -n kube-system -o yaml | \
+          sed -e "s/strictARP: false/strictARP: true/" | \
+          kubectl apply -f - -n kube-system
+
       - name: Create Vault AppRole Secret
         run: |
           kubectl create namespace external-secrets --dry-run=client -o yaml | kubectl apply -f -

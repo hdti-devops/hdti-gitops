@@ -2,6 +2,10 @@ baseRepoURL: https://github.com/hdti-devops/hdti-gitops.git
 basePath: clusters/hdti/tenants/dev/core/
 
 apps:
+  metallb:
+    targetRevision: HEAD
+    path: metallb
+    namespace: metallb-system
   nginxIngress:
     targetRevision: HEAD
     path: nginx-ingress

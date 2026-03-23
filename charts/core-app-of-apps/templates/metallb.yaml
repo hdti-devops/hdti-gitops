@@ -1,29 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-ingress
+  name: metallb
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "1"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: {{ .Values.baseRepoURL }}
-    targetRevision: {{ .Values.apps.nginxIngress.targetRevision }}
-    path: {{ .Values.basePath }}{{ .Values.apps.nginxIngress.path }}
+    targetRevision: {{ .Values.apps.metallb.targetRevision }}
+    path: {{ .Values.basePath }}{{ .Values.apps.metallb.path }}
     kustomize: {}
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.apps.nginxIngress.namespace }}
+    namespace: {{ .Values.apps.metallb.namespace }}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true
     retry:
       limit: 5
   

@@ -6,6 +6,10 @@
     "charts/external-secrets-tools": {
       "path": "charts/external-secrets-tools",
       "release-type": "helm"
+    },
+    "charts/metallb-tools": {
+      "path": "charts/metallb-tools",
+      "release-type": "helm"
     }
   }
 }

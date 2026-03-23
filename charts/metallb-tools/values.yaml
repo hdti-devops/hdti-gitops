@@ -1,0 +1,6 @@
+ipPool:
+  name: hdti
+  addresses:
+  - 192.168.0.240-192.168.0.250
+advertisement:
+  name: hdti

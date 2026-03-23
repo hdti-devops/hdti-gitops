@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: metallb-tools
+    namespace: metallb-system
+    releaseName: metallb-tools
+    path: ../../../../../../charts
+    version: metallb-tools-v1.0.0 #release by release please
+    includeCRDs: true
+  - name: metallb
+    namespace: metallb-system
+    releaseName: metallb
+    repo: https://metallb.github.io/metallb
+    version: 0.15.3
+    includeCRDs: true
