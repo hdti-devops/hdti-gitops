@@ -11,6 +11,8 @@ helmCharts:
     valuesInLine:
       global:
         domain: argocd.k8s.hdti.ca
+      redis:
+        existingSecret: argocd-redis
       configs:
         cm:
           kustomize.buildOptions: "--enable-helm --load-restrictor LoadRestrictionsNone"
