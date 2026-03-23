@@ -8,7 +8,7 @@ helmCharts:
   - name: external-secrets-tools
     namespace: external-secrets
     releaseName: external-secrets-tools
-    version: external-secrets-tools-v1.1.0 #release by release please
+    version: external-secrets-tools-v1.1.1 #release by release please
     includeCRDs: true
   - name: external-secrets
     namespace: external-secrets
