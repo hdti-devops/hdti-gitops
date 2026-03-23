@@ -1,4 +1,4 @@
 {
-    "charts/external-secrets-tools": "1.1.0",
+    "charts/external-secrets-tools": "1.1.1",
     "charts/metallb-tools": "1.0.0"
 }
