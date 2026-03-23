@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server
+  namespace: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
+    nginx.org/redirect-to-https: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: argocd.k8s.hdti.ca
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80 # Matches server.insecure: "true"
+  tls:
+    - hosts:
+        - argocd.k8s.hdti.ca
+      secretName: argocd-server-tls

@@ -16,16 +16,6 @@ helmCharts:
           kustomize.buildOptions: "--enable-helm --load-restrictor LoadRestrictionsNone"
         params:
           server.insecure: "true"
-      server:
-        ingress:
-          enabled: true
-          controller: "generic"
-          ingressClassName: "nginx"
-          annotations:
-            cert-manager.io/cluster-issuer: "selfsigned-cluster-issuer" # Matches your cert-manager requirement
-            nginx.org/redirect-to-https: "true"          
-          # The template uses 'hostname' to populate BOTH the rules and the TLS hosts
-          hostname: "argocd.k8s.hdti.ca"    
-          tls: true
-
-            
+      
+resources:
+  - ingress.yaml
