@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1 
+kind: Kustomization 
+
+helmCharts: 
+  - name: argo-cd 
+    namespace: argocd 
+    releaseName: argocd 
+    repo: https://argoproj.github.io/argo-helm 
+    version: 9.4.15 
+    includeCRDs: true
+    valuesInLine:
+      configs:
+        cm:
+          kustomize.buildOptions: "--enable-helm --load-restrictor LoadRestrictionsNone"
+        params:
+          server.insecure: "true"
+      server:
+        ingress:
+          enabled: true
+          ingressClassName: "nginx"
+          annotations:
+            cert-manager.io/cluster-issuer: "selfsigned-cluster-issuer" # Matches your cert-manager requirement
+            nginx.org/redirect-to-https: "true"          
+          hosts:
+            - argocd.k8s.hdti.ca     
+          tls:
+            - secretName: argocd-server-tls
+              hosts:
+                - argocd.k8s.hdti.ca
+            

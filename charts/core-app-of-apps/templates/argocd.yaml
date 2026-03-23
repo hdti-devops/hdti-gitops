@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: {{ .Values.baseRepoURL }}
+    targetRevision: {{ .Values.apps.argocd.targetRevision }}
+    path: {{ .Values.basePath }}{{ .Values.apps.argocd.path }}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ .Values.apps.argocd.namespace }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+    retry:
+      limit: 5

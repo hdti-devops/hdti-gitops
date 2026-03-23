@@ -21,3 +21,9 @@ apps:
     targetRevision: HEAD
     path: cert-manager
     namespace: cert-manager
+
+  argocd:
+    targetRevision: HEAD
+    path: argocd
+    namespace: argocd
+    
