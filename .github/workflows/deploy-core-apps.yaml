@@ -63,7 +63,7 @@ jobs:
 
           kubectl create secret generic vault-approle \
             --namespace external-secrets \
-            --from-literal=roleId=${{ secrets.ESO_ROLEID }} \
+            --from-literal=roleId=${{ secrets.ESO_CLIENTID }} \
             --from-literal=secretId=${{ secrets.ESO_SECRETID }} \
             --dry-run=client -o yaml | kubectl apply -f -
 
