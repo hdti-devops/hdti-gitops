@@ -1,22 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-ingress
+  name: cert-manager
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "3"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: {{ .Values.baseRepoURL }}
-    targetRevision: {{ .Values.apps.nginxIngress.targetRevision }}
-    path: {{ .Values.basePath }}{{ .Values.apps.nginxIngress.path }}
-    kustomize: {}
+    targetRevision: {{ .Values.apps.certManager.targetRevision }}
+    path: {{ .Values.basePath }}{{ .Values.apps.certManager.path }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.apps.nginxIngress.namespace }}
+    namespace: {{ .Values.apps.certManager.namespace }}
   syncPolicy:
     automated:
       prune: true

@@ -6,12 +6,18 @@ apps:
     targetRevision: HEAD
     path: metallb
     namespace: metallb-system
-  nginxIngress:
-    targetRevision: HEAD
-    path: nginx-ingress
-    namespace: nginx-ingress
 
   externalSecrets:
     targetRevision: HEAD
     path: external-secrets
     namespace: external-secrets
+
+  nginxIngress:
+    targetRevision: HEAD
+    path: nginx-ingress
+    namespace: nginx-ingress
+
+  certManager:
+    targetRevision: HEAD
+    path: cert-manager
+    namespace: cert-manager

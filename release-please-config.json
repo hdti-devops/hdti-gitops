@@ -10,6 +10,10 @@
     "charts/metallb-tools": {
       "path": "charts/metallb-tools",
       "release-type": "helm"
+    },
+    "charts/cert-manager-tools": {
+      "path": "charts/cert-manager-tools",
+      "release-type": "helm"
     }
   }
 }
