@@ -7,6 +7,6 @@ helmCharts:
   - name: ingress-nginx
     namespace: nginx-ingress
     releaseName: nginx-ingress
-    repo: oci://ghcr.io/nginx/charts/nginx-ingress
+    repo: oci://ghcr.io/nginx/charts
     version: 2.5.0
     includeCRDs: true
