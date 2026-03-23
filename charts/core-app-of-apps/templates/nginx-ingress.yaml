@@ -11,6 +11,7 @@ spec:
     repoURL: {{ .Values.baseRepoURL }}
     targetRevision: {{ .Values.apps.nginxIngress.targetRevision }}
     path: {{ .Values.basePath }}{{ .Values.apps.nginxIngress.path }}
+    kustomize: {}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.apps.nginxIngress.namespace }}
