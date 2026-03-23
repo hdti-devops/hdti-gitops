@@ -21,11 +21,10 @@ patches:
   # Patch for cert-manager-tools resources (Issuers, Certificates)
   - target:
       group: cert-manager.io
-      kind: (ClusterIssuer|Issuer|Certificate)
+      kind: ClusterIssuer
     patch: |
       apiVersion: cert-manager.io/v1
-      kind: unused
+      kind:ClusterIssuer
       metadata:
-        name: unused
         annotations:
           argocd.argoproj.io/sync-wave: "5"
