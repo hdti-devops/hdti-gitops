@@ -9,6 +9,8 @@ helmCharts:
     version: 9.4.15 
     includeCRDs: true
     valuesInLine:
+      global:
+        domain: argocd.k8s.hdti.ca
       configs:
         cm:
           kustomize.buildOptions: "--enable-helm --load-restrictor LoadRestrictionsNone"
@@ -21,10 +23,8 @@ helmCharts:
           annotations:
             cert-manager.io/cluster-issuer: "selfsigned-cluster-issuer" # Matches your cert-manager requirement
             nginx.org/redirect-to-https: "true"          
-          hosts:
-            - argocd.k8s.hdti.ca     
-          tls:
-            - secretName: argocd-server-tls
-              hosts:
-                - argocd.k8s.hdti.ca
+          # The template uses 'hostname' to populate BOTH the rules and the TLS hosts
+          hostname: "argocd.k8s.hdti.ca"    
+          tls: true
+
             
