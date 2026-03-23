@@ -19,6 +19,7 @@ helmCharts:
       server:
         ingress:
           enabled: true
+          controller: "generic"
           ingressClassName: "nginx"
           annotations:
             cert-manager.io/cluster-issuer: "selfsigned-cluster-issuer" # Matches your cert-manager requirement
