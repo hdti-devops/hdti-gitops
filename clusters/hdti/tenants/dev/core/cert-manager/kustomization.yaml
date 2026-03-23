@@ -18,10 +18,14 @@ helmCharts:
 
 # Force ArgoCD to wait for cert-manager to be healthy before tools
 patches:
+  # Patch for cert-manager-tools resources (Issuers, Certificates)
   - target:
       group: cert-manager.io
-      kind: (Issuer|ClusterIssuer|Certificate) # Any resource in your 'tools' chart
-    patch: |-
-      - op: add
-        path: /metadata/annotations/argocd.argoproj.io/sync-wave
-        value: "4"
+      kind: (ClusterIssuer|Issuer|Certificate)
+    patch: |
+      apiVersion: cert-manager.io/v1
+      kind: unused
+      metadata:
+        name: unused
+        annotations:
+          argocd.argoproj.io/sync-wave: "4"
