@@ -28,4 +28,4 @@ patches:
       metadata:
         name: unused
         annotations:
-          argocd.argoproj.io/sync-wave: "4"
+          argocd.argoproj.io/sync-wave: "5"

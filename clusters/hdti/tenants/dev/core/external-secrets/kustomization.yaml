@@ -19,10 +19,11 @@ helmCharts:
 patches:
   - target:
       group: external-secrets.io
-      version: v1
       kind: ClusterSecretStore
-      name: vault # Ensure this matches the metadata.name of your store
-    patch: |-
-      - op: add
-        path: /metadata/annotations/argocd.argoproj.io/sync-wave
-        value: "2"
+    patch: |
+      apiVersion: external-secrets.io/v1
+      kind: ClusterSecretStore
+      metadata:
+        name: vault
+        annotations:
+          argocd.argoproj.io/sync-wave: "5"
