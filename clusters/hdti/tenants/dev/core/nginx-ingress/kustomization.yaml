@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: nginx-ingress
 
 helmCharts:
-  - name: ingress-nginx
+  - name: nginx-nginx
     namespace: nginx-ingress
     releaseName: nginx-ingress
     repo: oci://ghcr.io/nginx/charts
