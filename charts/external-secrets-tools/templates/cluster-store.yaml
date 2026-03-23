@@ -2,6 +2,7 @@ apiVersion: external-secrets.io/v1
 kind: ClusterSecretStore
 metadata:
   name: vault
+  namespace: external-secrets
 spec:
   provider:
     vault:
@@ -11,12 +12,8 @@ spec:
       auth:
         appRole:
           path: "{{ .Values.vault.approlePath }}"
-          # Pull roleId and secretId directly from Kubernetes secret
-          roleId:
-            secretRef:
-              name: "{{ .Values.vault.secretName }}"
-              key: "{{ .Values.vault.secretKeyRoleId }}"
-              namespace: "{{ .Values.vault.secretNamespace }}"
+          # FIX: roleId must be a string value, not a secretRef
+          roleId: "{{ .Values.vault.roleIdValue }}" 
           secretRef:
             name: "{{ .Values.vault.secretName }}"
             key: "{{ .Values.vault.secretKeySecretId }}"

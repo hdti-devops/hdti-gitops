@@ -3,6 +3,7 @@ vault:
   path: "secrets"
   version: "v2"
   approlePath: "approle"
+  roleIdValue: "324ff326-e3bc-9c99-8c04-a21c8a6aeac5"
   secretNamespace: "external-secrets"
   secretName: "vault-approle"
   secretKeyRoleId: "roleId"   # key in secret for roleId
