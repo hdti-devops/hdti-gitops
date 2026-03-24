@@ -13,7 +13,7 @@ spec:
             secretName: step-ca-root
 
       containers:
-        - name: cert-manager
+        - name: cert-manager-controller 
           volumeMounts:
             - name: step-ca-root
               mountPath: /etc/ssl/certs/step-ca.crt
