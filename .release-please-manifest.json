@@ -1,5 +1,5 @@
 {
     "charts/external-secrets-tools": "1.2.1",
     "charts/metallb-tools": "1.0.0",
-    "charts/cert-manager-tools": "1.1.0"
+    "charts/cert-manager-tools": "1.2.0"
 }
