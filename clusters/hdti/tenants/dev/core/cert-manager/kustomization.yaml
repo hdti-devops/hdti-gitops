@@ -15,8 +15,6 @@ helmCharts:
     valuesInLine:
       crds:
         enabled: true
-      extraArgs:
-        - --tls-ca-file=/etc/ssl/certs/step-ca.crt
   - name: cert-manager-tools
     namespace: cert-manager
     releaseName: cert-manager-tools
