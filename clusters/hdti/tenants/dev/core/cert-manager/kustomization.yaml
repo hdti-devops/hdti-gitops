@@ -14,8 +14,21 @@ helmCharts:
     includeCRDs: true
     valuesInLine:
       crds:
-        enabled: true   
+        enabled: true
+      controller:
+        extraVolumes:
+          - name: step-ca-root
+            secret:
+              secretName: step-ca-root
+        extraVolumeMounts:
+          - name: step-ca-root
+            mountPath: /etc/ssl/certs/step-ca.crt
+            subPath: caBundle
+            readOnly: true
+        extraEnv:
+          - name: SSL_CERT_FILE
+            value: /etc/ssl/certs/step-ca.crt
   - name: cert-manager-tools
     namespace: cert-manager
     releaseName: cert-manager-tools
-    version: cert-manager-tools-v1.4.1 #release by release please
+    version: cert-manager-tools-v1.4.2 #release by release please
