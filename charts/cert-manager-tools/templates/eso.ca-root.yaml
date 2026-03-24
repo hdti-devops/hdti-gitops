@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: {{ .Values.eso.stepCa.name }}
+  namespace: cert-manager
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: vault
+    kind: ClusterSecretStore
+  target:
+    name: {{ .Values.eso.stepCa.name }}
+  data:
+  - secretKey: caBundle
+    remoteRef:
+      key: {{ .Values.eso.stepCa.path }}
+      property: {{ .Values.eso.stepCa.property }}

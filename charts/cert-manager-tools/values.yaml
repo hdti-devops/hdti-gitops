@@ -1,3 +1,16 @@
+eso: 
+  stepCa:
+    name: step-ca-root
+    path: secrets/k8s/dev/step-ca-root
+    property: caBundle
+  
+  tsig:
+    name: tsig-secret
+    path: secrets/k8s/dev/tsig
+    property:  tsig-secret-key
+  
+
 clusterIssuer:
-  name: letsencrypt
-  email: "hdti-devops@consultant.com"
+  name: step-ca
+  email: "dom@hdti.ca"
+  nameserverIp: 192.168.0.184

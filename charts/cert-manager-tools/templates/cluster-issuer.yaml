@@ -2,15 +2,24 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: {{ .Values.clusterIssuer.name }}-cluster-issuer
+  name: {{ .Values.clusterIssuer.name }}-issuer
 spec:
   acme:
-    email: {{ .Values.clusterIssuer.email}}         # <-- Replace with your email
-    server: https://acme-v02.api.letsencrypt.org/directory
+    # Step CA ACME endpoint
+    server: https://step-ca.hdti.ca/acme/acme/directory
+    email: {{ .Values.clusterIssuer.email}}
     privateKeySecretRef:
-      name: letsencrypt-dns-account-key    # ACME account key secret
+      name: step-ca-account-key
+    # Trust your internal Step CA root
+    caBundleSecretRef:
+      name: {{ .Values.eso.stepCa.name }}
+      key: {{ .Values.eso.stepCa.property }}
     solvers:
-      - dns01:
-          webhook:
-            groupName: acme.hdti.ca
-            solverName: technitium-dns
+    - dns01:
+        rfc2136:
+          nameserver: {{ .Values.clusterIssuer.nameserverIp }} # Technitium DNS IP
+          tsigAlgorithm: HMACSHA256
+          tsigKeyName: cert-manager-key
+          tsigSecretSecretRef:
+            name: {{ .Values.eso.tsig.name }}          # Kubernetes Secret containing TSIG key
+            key: {{ .Values.eso.tsig.property }}       # Key name inside the Secret
