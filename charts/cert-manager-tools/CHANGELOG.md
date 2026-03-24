@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.3.0...cert-manager-tools-v1.4.0) (2026-03-24)
+
+
+### Features
+
+* **cert-manager-tools:** rfc2136 ([e0da5ea](https://github.com/hdti-devops/hdti-gitops/commit/e0da5ea9b87a1ad926d9237294839b66c7d115b6))
+
 ## [1.3.0](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.2.0...cert-manager-tools-v1.3.0) (2026-03-24)
 
 
