@@ -1,0 +1,25 @@
+# patch-cert-manager.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cert-manager
+  namespace: cert-manager
+spec:
+  template:
+    spec:
+      volumes:
+        - name: step-ca-root
+          secret:
+            secretName: step-ca-root
+
+      containers:
+        - name: cert-manager
+          volumeMounts:
+            - name: step-ca-root
+              mountPath: /etc/ssl/certs/step-ca.crt
+              subPath: caBundle
+              readOnly: true
+
+          env:
+            - name: SSL_CERT_FILE
+              value: /etc/ssl/certs/step-ca.crt
