@@ -5,11 +5,12 @@ metadata:
   name: {{ .Values.clusterIssuer.name }}-cluster-issuer
 spec:
   acme:
-    email: {{ .Values.clusterIssuer.email}}
+    email: {{ .Values.clusterIssuer.email}}         # <-- Replace with your email
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: letsencrypt-account-key
+      name: letsencrypt-dns-account-key    # ACME account key secret
     solvers:
-      - http01:
-          ingress:
-            class: nginx
+      - dns01:
+          webhook:
+            groupName: acme.hdti.ca
+            solverName: technitium-dns
