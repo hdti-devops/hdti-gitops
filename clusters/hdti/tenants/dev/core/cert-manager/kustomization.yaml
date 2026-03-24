@@ -18,4 +18,4 @@ helmCharts:
   - name: cert-manager-tools
     namespace: cert-manager
     releaseName: cert-manager-tools
-    version: cert-manager-tools-v1.0.0 #release by release please
+    version: cert-manager-tools-v1.1.0 #release by release please
