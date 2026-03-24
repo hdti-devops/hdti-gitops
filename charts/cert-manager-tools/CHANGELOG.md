@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.4.1...cert-manager-tools-v1.4.2) (2026-03-24)
+
+
+### Bug Fixes
+
+* **cert-manager-tools:** version ([7045c0b](https://github.com/hdti-devops/hdti-gitops/commit/7045c0bcde1ce1cd49dec38773f62d4a0f4518d9))
+
 ## [1.4.1](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.4.0...cert-manager-tools-v1.4.1) (2026-03-24)
 
 
