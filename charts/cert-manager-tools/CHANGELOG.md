@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.2.0...cert-manager-tools-v1.3.0) (2026-03-24)
+
+
+### Features
+
+* **cert-manager-tools:** technitium rbac ([8b022b4](https://github.com/hdti-devops/hdti-gitops/commit/8b022b4e89ee92232ffd7ed5c50ba0810770d7ed))
+
 ## [1.2.0](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.1.0...cert-manager-tools-v1.2.0) (2026-03-24)
 
 
