@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.1.0...cert-manager-tools-v1.2.0) (2026-03-24)
+
+
+### Features
+
+* **cert-manager-tools:** lets encrypt dns challenge ([bc3c7eb](https://github.com/hdti-devops/hdti-gitops/commit/bc3c7ebde95ad7f3434e648aaf0173817bb28e86))
+
 ## [1.1.0](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.0.0...cert-manager-tools-v1.1.0) (2026-03-24)
 
 
