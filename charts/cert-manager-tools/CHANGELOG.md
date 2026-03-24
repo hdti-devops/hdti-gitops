@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.4.2...cert-manager-tools-v1.5.0) (2026-03-24)
+
+
+### Features
+
+* **cert-manager-tools:** rbac ([cc7902f](https://github.com/hdti-devops/hdti-gitops/commit/cc7902fff09e277b83b207f00e1ec4c9266ee586))
+
 ## [1.4.2](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.4.1...cert-manager-tools-v1.4.2) (2026-03-24)
 
 
