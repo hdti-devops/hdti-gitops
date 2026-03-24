@@ -21,4 +21,4 @@ helmCharts:
     version: cert-manager-tools-v1.4.2 #release by release please
 
 patches:
-  - path: patch-cert-manager.yaml
+  - path: cert-manager-patch.yaml
