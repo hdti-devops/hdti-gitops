@@ -20,4 +20,4 @@ helmCharts:
           server.insecure: "true"
       
 resources:
-  - argo-server.ingress.yaml
+  - argocd-server.ingress.yaml
