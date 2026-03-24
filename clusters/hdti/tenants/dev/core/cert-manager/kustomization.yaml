@@ -18,7 +18,7 @@ helmCharts:
   - name: cert-manager-tools
     namespace: cert-manager
     releaseName: cert-manager-tools
-    version: cert-manager-tools-v1.4.2 #release by release please
+    version: cert-manager-tools-v1.5.0 #release by release please
 
 patches:
   - path: cert-manager-patch.yaml
