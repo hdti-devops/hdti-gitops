@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.5.0...cert-manager-tools-v1.6.0) (2026-03-27)
+
+
+### Features
+
+* **cert-manager-tools:** lets encrypt external ([a1737de](https://github.com/hdti-devops/hdti-gitops/commit/a1737de1b5bd1d7fb4aa8ea85ba3b8208f62d04f))
+
 ## [1.5.0](https://github.com/hdti-devops/hdti-gitops/compare/cert-manager-tools-v1.4.2...cert-manager-tools-v1.5.0) (2026-03-24)
 
 
