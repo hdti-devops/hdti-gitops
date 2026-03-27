@@ -6,6 +6,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: step-ca-issuer
     nginx.org/redirect-to-https: "true"
+    nginx.org/rewrites: "true"
 spec:
   ingressClassName: nginx
   rules:
