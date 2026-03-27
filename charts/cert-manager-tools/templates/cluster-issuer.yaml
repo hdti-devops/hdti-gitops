@@ -6,7 +6,8 @@ metadata:
 spec:
   acme:
     # Step CA ACME endpoint
-    server: https://step-ca.hdti.ca/acme/acme/directory
+    # server: https://step-ca.hdti.ca/acme/acme/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     email: {{ .Values.clusterIssuer.email}}
     privateKeySecretRef:
       name: step-ca-account-key
